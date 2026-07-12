@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kakigori housekibaco | Postres de hielo artesanales en Nara, Japón</title>
+<meta name="description" content="Housekibaco es una tienda especializada en kakigori en Nara, cuna de la cultura del hielo en Japón. Hielo congelado lentamente durante 72 horas, raspado en láminas ligeras como plumas y vestido con ingredientes de temporada y espuma — todo el año.">
+<meta property="og:title" content="kakigori housekibaco | hielo &amp; té, Nara">
+<meta property="og:description" content="Desde Nara, cuna de la cultura del hielo en Japón. Un pequeño premio de kakigori, todo el año.">
+<meta property="og:image" content="images/hero.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ice:#F6F8FA;
+  --paper:#FFFFFF;
+  --sumi:#252B3B;
+  --sumi-soft:#5B6274;
+  --hanada:#4C6FB1;   /* 縹 */
+  --sumire:#6B5AA0;   /* 菫 */
+  --seiheki:#3D9E93;  /* 青碧 */
+  --ichigo:#D6455B;
+  --line:#DDE3EA;
+  --grad:linear-gradient(160deg,var(--seiheki) 0%,var(--hanada) 48%,var(--sumire) 100%);
+  --serif:"Shippori Mincho",serif;
+  --sans:"Zen Kaku Gothic New",sans-serif;
+  --latin:"Cormorant Garamond",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--sumi);background:var(--ice);line-height:1.9;font-weight:400;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--hanada);color:#fff}
+
+/* ---------- header ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;transition:background .4s,box-shadow .4s}
+header.scrolled{background:rgba(246,248,250,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.brand{display:flex;align-items:center}
+.brand .uslogo{height:34px;width:auto;filter:brightness(0) invert(1) drop-shadow(0 1px 5px rgba(0,0,0,.35));transition:filter .4s}
+header.scrolled .brand .uslogo{filter:none}
+@media(max-width:760px){.brand .uslogo{height:28px}}
+nav{display:flex;gap:30px;font-size:13px;letter-spacing:.18em;color:#fff;transition:color .4s}
+header.scrolled nav{color:var(--sumi)}
+nav a{position:relative;padding:4px 0}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:currentColor;transition:width .3s}
+nav a:hover::after{width:100%}
+.nav-reserve{border:1px solid currentColor;border-radius:999px;padding:7px 18px}
+.nav-reserve:hover{background:var(--sumi);border-color:var(--sumi);color:#fff}
+.nav-langs{display:flex;gap:10px;font-family:var(--latin);font-style:italic;font-size:14px;opacity:.9}
+.nav-langs a{opacity:.6}.nav-langs a.on{opacity:1;border-bottom:1px solid currentColor}
+header.scrolled .nav-reserve:hover{color:#fff}
+@media(max-width:760px){nav{display:none}.lang-fab{display:flex}}
+
+/* ---------- hero (Ken Burns slideshow) ---------- */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end;background:var(--sumi)}
+.hero .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease}
+.hero .slide.active{opacity:1}
+.hero .slide img{width:100%;height:100%;object-fit:cover;object-position:center 55%;transform:scale(1);will-change:transform}
+.hero .slide.active img{animation:kenburns 8.5s ease-out forwards}
+.hero .slide:nth-child(even).active img{animation-name:kenburns-alt}
+@keyframes kenburns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.14) translate(-1.5%,1.5%)}}
+@keyframes kenburns-alt{from{transform:scale(1.14) translate(1.5%,-1%)}to{transform:scale(1) translate(0,0)}}
+@keyframes kenburns-gentle{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1) translate(0,-1%)}}
+.hero .slide.show-full img{object-position:center 42%}
+.hero .slide.show-full.active img{animation-name:kenburns-gentle}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,26,40,.35) 0%,rgba(20,26,40,0) 35%,rgba(20,26,40,.55) 100%)}
+.hero-dots{position:absolute;right:26px;bottom:26px;z-index:3;display:flex;gap:8px}
+.hero-dots button{width:26px;height:3px;border:none;border-radius:2px;background:rgba(255,255,255,.35);cursor:pointer;padding:0;transition:background .3s}
+.hero-dots button.on{background:#fff}
+@media(prefers-reduced-motion:reduce){.hero .slide.active img{animation:none}}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:0 28px 96px;color:#fff;display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5vw,54px);letter-spacing:.16em;line-height:1.5;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero .en{font-family:var(--latin);font-style:italic;font-size:clamp(17px,2vw,22px);letter-spacing:.12em;opacity:.9;margin-bottom:14px}
+.hero .sub{font-size:14px;letter-spacing:.24em;margin-top:20px;opacity:.95}
+.hero-tate{writing-mode:vertical-rl;font-family:var(--serif);font-size:15px;letter-spacing:.5em;line-height:2.4;opacity:.9;padding-bottom:6px;text-shadow:0 1px 12px rgba(0,0,0,.4);flex-shrink:0}
+.scroll-cue{position:absolute;right:28px;bottom:22px;z-index:2;color:#fff;font-size:10px;letter-spacing:.3em;opacity:.8;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-cue::after{content:"";width:1px;height:36px;background:#fff;animation:drip 2.2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:760px){.hero-tate{display:none}.hero-inner{padding-bottom:108px}.scroll-cue{right:auto;left:28px}}
+
+/* ---------- shared ---------- */
+section{padding:110px 28px}
+.wrap{max-width:1120px;margin:0 auto}
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.32em;color:var(--sumi-soft);margin-bottom:26px}
+.eyebrow::before{content:"";width:44px;height:2px;background:var(--grad);border-radius:2px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,36px);letter-spacing:.12em;line-height:1.7;margin-bottom:28px}
+.lead{max-width:640px;font-size:15px;color:var(--sumi-soft)}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- concept ---------- */
+.concept .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center}
+.concept-kori{position:relative;display:flex;justify-content:center}
+.concept-kori .flag{max-width:380px;width:100%;border-radius:6px;box-shadow:0 24px 60px rgba(37,43,59,.18);transform:rotate(-1.2deg)}
+.concept-kori::before{content:"";position:absolute;inset:10% -6% -6% 12%;background:var(--grad);opacity:.12;border-radius:8px;z-index:-1}
+.concept-kori .cap{position:absolute;right:2%;bottom:-4px;writing-mode:vertical-rl;font-family:var(--serif);font-size:13px;letter-spacing:.4em;color:var(--sumi-soft)}
+.concept p{margin-bottom:1.4em;font-size:15px}
+.concept strong{font-weight:700;background:linear-gradient(transparent 68%,rgba(76,111,177,.18) 68%)}
+@media(max-width:860px){.concept .wrap{grid-template-columns:1fr;gap:44px}}
+
+/* ---------- three pillars ---------- */
+.pillars{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:20px}
+.pillar{padding-top:26px;border-top:2px solid transparent;border-image:var(--grad) 1;border-image-slice:0 0 0 0}
+.pillar{border-top:2px solid var(--line);position:relative}
+.pillar::before{content:"";position:absolute;top:-2px;left:0;width:56px;height:2px;background:var(--grad)}
+.pillar h3{font-family:var(--serif);font-size:19px;letter-spacing:.12em;margin-bottom:14px}
+.pillar .en{font-family:var(--latin);font-style:italic;font-size:14px;color:var(--sumi-soft);letter-spacing:.08em;display:block;margin-bottom:4px}
+.pillar p{font-size:14px;color:var(--sumi-soft)}
+@media(max-width:860px){.pillar-grid{grid-template-columns:1fr;gap:36px}}
+
+/* ---------- gallery ---------- */
+.gallery{padding-left:0;padding-right:0}
+.gallery .head{max-width:1120px;margin:0 auto 48px;padding:0 28px}
+.masonry{columns:3;column-gap:14px;max-width:1400px;margin:0 auto;padding:0 14px}
+.masonry figure{break-inside:avoid;margin-bottom:14px;position:relative;overflow:hidden;border-radius:6px}
+.masonry img{width:100%;transition:transform 1.2s cubic-bezier(.2,.6,.2,1)}
+.masonry figure:hover img{transform:scale(1.04)}
+.masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 12px;font-size:12px;letter-spacing:.2em;color:#fff;background:linear-gradient(transparent,rgba(20,26,40,.55));opacity:0;transition:opacity .4s}
+.masonry figure:hover figcaption{opacity:1}
+.gallery-note{max-width:1120px;margin:36px auto 0;padding:0 28px;font-size:13px;color:var(--sumi-soft)}
+@media(max-width:960px){.masonry{columns:2}}
+@media(max-width:600px){.masonry{columns:1}}
+
+/* ---------- history ---------- */
+.history{background:repeating-linear-gradient(97deg,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) 1px,transparent 1px,transparent 7px),linear-gradient(160deg,#dcbf90 0%,#c39c68 100%);color:#4a3319}
+.history .eyebrow{color:#8a6a3f}
+.history h2{color:#3b2712}
+.timeline{margin-top:56px;display:grid;gap:0}
+.trow{display:grid;grid-template-columns:120px 1fr;gap:28px;padding:22px 0;border-top:1px solid rgba(59,39,18,.18)}
+.trow:last-child{border-bottom:1px solid rgba(59,39,18,.18)}
+.trow .year{font-family:var(--latin);font-style:italic;font-size:22px;letter-spacing:.06em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.trow p{font-size:14px;color:#5c4527}
+.trow p b{color:#3b2712;font-weight:600}
+@media(max-width:600px){.trow{grid-template-columns:1fr;gap:6px}}
+
+/* ---------- info ---------- */
+.info .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start}
+.info-photo{border-radius:8px;overflow:hidden}
+.info table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.info th,.info td{padding:14px 4px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.info th{width:8.5em;font-weight:500;letter-spacing:.14em;color:var(--sumi-soft);white-space:nowrap}
+.info .small{font-size:12px;color:var(--sumi-soft)}
+.btn-row{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:999px;font-size:14px;letter-spacing:.14em;transition:transform .25s,box-shadow .25s}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(76,111,177,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(76,111,177,.45)}
+.btn-ghost{border:1px solid var(--sumi);color:var(--sumi)}
+.btn-ghost:hover{background:var(--sumi);color:#fff}
+@media(max-width:860px){.info .wrap{grid-template-columns:1fr}}
+
+/* ---------- links ---------- */
+.links{background:var(--ice)}
+.link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
+.link-card{display:flex;align-items:center;gap:18px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:22px 24px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.link-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(37,43,59,.10);border-color:transparent}
+.link-card .ic{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff}
+.link-card .ic svg{width:18px;height:18px}
+.link-card h3{font-size:15px;font-weight:500;letter-spacing:.06em;line-height:1.5}
+.link-card .dom{font-size:12px;color:var(--sumi-soft);letter-spacing:.04em;word-break:break-all}
+.link-card .arrow{margin-left:auto;color:var(--sumi-soft);transition:transform .25s}
+.link-card:hover .arrow{transform:translateX(4px);color:var(--hanada)}
+@media(max-width:760px){.link-grid{grid-template-columns:1fr}}
+
+/* ---------- sousuke ---------- */
+.sousuke{background:var(--paper);border-top:1px solid var(--line)}
+.sousuke .wrap{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.sousuke h2{margin-bottom:14px}
+.sousuke p{font-size:14px;color:var(--sumi-soft);max-width:560px}
+@media(max-width:760px){.sousuke .wrap{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+footer{background:repeating-linear-gradient(97deg,rgba(255,255,255,.07) 0px,rgba(255,255,255,.07) 1px,transparent 1px,transparent 7px),linear-gradient(160deg,#dcbf90 0%,#c39c68 100%);color:#5c4527;padding:64px 28px 40px}
+.f-wrap{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-end}
+.f-brand{font-family:var(--serif);color:#fff;font-size:18px;letter-spacing:.14em;margin-bottom:10px}
+footer a:hover{color:#3b2712}
+.f-links{display:flex;gap:22px;font-size:13px;letter-spacing:.1em}
+.copy{font-size:11px;letter-spacing:.12em;margin-top:34px;text-align:center;color:#8a6a3f}
+
+/* ---------- lightbox ---------- */
+.masonry figure{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(20,26,40,.93);display:none;align-items:center;justify-content:center;padding:4vh 4vw;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:lb-in .25s ease}
+@keyframes lb-in{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .scroll-cue::after{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <a class="brand" href="#top"><img class="uslogo" src="images/logo-us.png" alt="kakigori housekibaco — Artisanal ice dessert works from Nara"></a>
+  <nav>
+    <a href="#concept">Oficio</a>
+    <a href="#gallery">Kakigori</a>
+    <a href="#links">Enlaces</a>
+    <a href="#history">Historia</a>
+    <a href="#info">Visítanos</a>
+    <a class="nav-reserve" href="https://airrsv.net/housekibaco-sousuke/calendar" target="_blank" rel="noopener">Reservar</a>
+    <div class="nav-langs"><a href="index.html">JA</a><a href="en.html">EN</a><a href="fr.html">FR</a><a href="zh.html">中文</a><a href="es.html" class="on">ES</a></div>
+  </nav>
+</header>
+<div class="lang-fab"><a href="index.html">JA</a><a href="en.html">EN</a><a href="fr.html">FR</a><a href="zh.html">中文</a><a href="es.html" class="on">ES</a></div>
+<style>.lang-fab{display:none;position:fixed;right:12px;bottom:12px;z-index:60;padding:9px 14px;border-radius:999px;background:var(--grad);color:#fff;align-items:center;gap:12px;font-family:var(--latin);font-style:italic;font-size:13px;box-shadow:0 6px 18px rgba(37,43,59,.3)}.lang-fab a{opacity:.65}.lang-fab a.on{opacity:1;border-bottom:1px solid #fff}</style>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="slide active"><img src="images/ice-blue-hd.jpg" alt="いちごのかき氷" fetchpriority="high"></div>
+  <div class="slide show-full"><img src="images/hero-hd.jpg" alt="青いかき氷" loading="lazy"></div>
+  <div class="slide"><img src="images/ice-strawberry-hd.jpg" alt="いちごのかき氷" loading="lazy"></div>
+  <div class="slide"><img src="images/ice-kohaku-hd.jpg" alt="白いエスプーマのかき氷" loading="lazy"></div>
+  <div class="slide"><img src="images/ice-violet-hd.jpg" alt="すみれ色のかき氷" loading="lazy"></div>
+  <div class="slide"><img src="images/ice-sake-hd.jpg" alt="奈良の日本酒とかき氷" loading="lazy"></div>
+  <div class="slide"><img src="images/ice-suika-hd.jpg" alt="すいかのかき氷" loading="lazy"></div>
+  <div class="hero-dots" aria-label="Slideshow controls"></div>
+  <div class="hero-inner">
+    <div>
+      <p class="en"><span style="letter-spacing:.3em">kakigori</span> &nbsp;Artisanal ice dessert works</p>
+      <h1>kakigori housekibaco</h1>
+      <p class="sub">Una tienda especializada en kakigori — desde Nara, donde comenzó el oficio del hielo. Un bol reconfortante, todo el año.</p>
+    </div>
+    <p class="hero-tate">Suave, fugaz — cae, revolotea, se posa.</p>
+  </div>
+  <div class="scroll-cue">SCROLL</div>
+</div>
+
+<!-- CONCEPT -->
+<section class="concept" id="concept">
+  <div class="wrap">
+    <div class="concept-kori reveal">
+      <img class="flag" src="images/flag.jpg" alt="ほうせき箱の氷旗" loading="lazy">
+      <span class="cap">削り氷に　あまづらいれて　新しきかなまりに入れたる</span>
+    </div>
+    <div class="reveal">
+      <p class="eyebrow">CONCEPT</p>
+      <h2>Nara, cuna del<br><span class="grad-text">oficio del hielo</span> de Japón.</h2>
+      <p>Antiguamente, Nara guardaba su hielo en <em>himuro</em>, antiguas neveras subterráneas, y el santuario Himuro, dedicado a la deidad guardiana de esas neveras, sigue en pie hoy. Housekibaco nació en 2015 en la calle comercial Mochiidono, inspirada por el festival de kakigori «Himuro Shirayuki Matsuri» de 2014, celebrado en el propio recinto del santuario.</p>
+      <p>En el dialecto de Nara, <em>houseki</em> significa <strong>«una merienda»</strong>. Queríamos entregar pequeños premios cotidianos con la emoción de abrir un cofre de gemas, y también deseábamos que las sonrisas de quienes se reúnen aquí, venidos de todo el mundo, brillaran como joyas. Con ese doble sentido nos llamamos «housekibaco», literalmente «joyero».</p>
+      <p>El kakigori fue durante mucho tiempo un placer solo de verano en Japón. Con ingredientes de temporada, desde Nara raspamos un hielo fugaz y hermoso, para saborear en cualquier estación.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="wrap">
+    <p class="eyebrow reveal">OUR CRAFT</p>
+    <h2 class="reveal">Tres compromisos en cada bol.</h2>
+    <div class="pillar-grid">
+      <div class="pillar reveal">
+        <span class="en">Ice</span>
+        <h3>Hielo de 72 horas</h3>
+        <p>Congelado lentamente, nuestro hielo es cristalino y tarda en derretirse: un lienzo blanco puro que refleja el sabor de cada ingrediente.</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="en">Craftsmanship</span>
+        <h3>Raspado artesanal</h3>
+        <p>Un solo grado en el ángulo de la cuchilla cambia la textura. Ese hielo esponjoso que se deshace en la boca nace de manos expertas.</p>
+      </div>
+      <div class="pillar reveal">
+        <span class="en">Local</span>
+        <h3>Ingredientes de Nara</h3>
+        <p>Leche de la granja Uemura, fresas y caquis de Nara: los ingredientes de productores locales se convierten en nuestra espuma y siropes caseros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT KAKIGORI -->
+<section class="about-kakigori" style="background:var(--sumi);color:#EDF1F6;text-align:center">
+  <div class="wrap" style="max-width:760px">
+    <p class="eyebrow reveal" style="justify-content:center;color:#A9B3C6">ABOUT</p>
+    <h2 class="reveal" style="color:#fff;font-family:var(--latin);font-style:italic;font-weight:500;letter-spacing:.18em;font-size:clamp(30px,4.4vw,46px)">KAKIGORI</h2>
+    <p class="reveal" style="font-size:15px;color:#C6CEDC;text-align:left;margin-top:10px">El KAKIGORI es un postre de hielo tradicional japonés con más de 1.000 años de historia. Raspamos en láminas ligerísimas un hielo muy puro, congelado lentamente, llamado <em>junpyo</em>, y lo vestimos con siropes variados, frutas y nuestra espuma característica. Así como el <em>sushi</em> y la <em>tempura</em> recorren el mundo con su propio nombre, creemos que esta cultura merece ser conocida por el suyo: no «hielo raspado», sino <b style="color:#fff">kakigori</b>.</p>
+    <p class="reveal" style="margin-top:26px;font-family:var(--latin);font-style:italic;font-size:17px;letter-spacing:.14em;color:#fff">#kakigori&nbsp;&nbsp;#housekibaco</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="head">
+    <p class="eyebrow reveal">KAKIGORI</p>
+    <h2 class="reveal">La forma del hielo, a través de las estaciones.</h2>
+    <p class="lead reveal">Fresas de primavera, frutas de verano, castañas de otoño y boles reconfortantes de invierno: la carta cambia con las estaciones. Las novedades, en Instagram.</p>
+  </div>
+  <div class="masonry">
+    <figure class="reveal"><img src="images/hero.jpg" alt="青いかき氷" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-strawberry.jpg" alt="いちごのかき氷" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-sake.jpg" alt="奈良の日本酒とかき氷" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-matcha-custard.jpg" alt="抹茶とカスタードのかき氷" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-blue.jpg" alt="青いグラデーションのかき氷" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-kohaku.jpg" alt="白いエスプーマのかき氷とお茶" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-violet.jpg" alt="すみれ色のかき氷" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-ichigo-glass.jpg" alt="グラスに盛られたいちご氷" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-matcha-milk.jpg" alt="抹茶とミルクのかき氷" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-purple-lemon.jpg" alt="バタフライピーのかき氷" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-milk-azuki.jpg" alt="ミルク氷とあずき" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-white-drape.jpg" alt="クリームをまとったかき氷" loading="lazy"></figure>
+    <figure class="reveal"><img src="images/ice-marshmallow.jpg" alt="マシュマロをのせたかき氷" loading="lazy"></figure>
+  </div>
+  <p class="gallery-note">Las fotos incluyen menús anteriores. La oferta y los precios cambian según la temporada.</p>
+</section>
+
+<!-- HISTORY -->
+<section class="history" id="history">
+  <div class="wrap">
+    <p class="eyebrow reveal">HISTORY</p>
+    <h2 class="reveal">De Nara al mundo.</h2>
+    <div class="timeline">
+      <div class="trow reveal"><span class="year">2015</span><p><b>Abre Housekibaco.</b> Una pequeña barra de 13 asientos en la calle comercial Mochiidono, Nara.</p></div>
+      <div class="trow reveal"><span class="year">2017</span><p><b>Comienza el negocio de la hoja de caqui.</b> Gestión de un huerto de 0,7 hectáreas: cultivo, procesado y venta.</p></div>
+      <div class="trow reveal"><span class="year">2018</span><p><b>Traslado al local actual.</b> Renace como «kakigori housekibaco», un espacio más grande con 34 asientos.</p></div>
+      <div class="trow reveal"><span class="year">2022</span><p><b>Abre la tienda hermana «SOUSUKE».</b> Una casa de té de hoja de caqui dentro de la terminal de autobuses del Parque de Nara.</p></div>
+      <div class="trow reveal"><span class="year">2023</span><p><b>«CAFE75» en la pop-up de ONITSUKA TIGER en Ginza.</b> Una colaboración sirviendo kakigori hasta enero de 2024.</p></div>
+      <div class="trow reveal"><span class="year">2024</span><p><b>Talleres de kakigori en Berlín y Múnich.</b> En Múnich, una colaboración de kakigori en el restaurante con 3 estrellas Michelin «Tohru in der Schreiberei». Presentando el kakigori a hosteleros y medios alemanes.</p></div>
+      <div class="trow reveal"><span class="year">2025</span><p><b>En el escenario de «ALL NARA FESTIVAL», Expo 2025 Osaka.</b> También asesoró en técnicas de kakigori a un popular café de Arabia Saudí.</p></div>
+      <div class="trow reveal"><span class="year">2025</span><p><b>Servicio en la recepción VIP de «PRADA mode osaka».</b> También el evento «Nara ~kakigori~» en colaboración con MUJI Kashihara.</p></div>
+      <div class="trow reveal"><span class="year">2026</span><p><b>Apertura prevista cerca de Los Ángeles, EE. UU.</b> Llevando el kakigori al mundo en el food hall japonés de ROUND ONE USA.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info" id="info">
+  <div class="wrap">
+    <div class="info-photo reveal"><img src="images/interior.jpg" alt="ほうせき箱 店内" loading="lazy"></div>
+    <div class="reveal">
+      <p class="eyebrow">SHOP INFO</p>
+      <h2>Visítanos</h2>
+      <table>
+        <tr><th>Tienda</th><td>kakigori housekibaco</td></tr>
+        <tr><th>Dirección</th><td>47 Mochiidono-cho, Nara City, Nara 630-8222<br><span class="small">A unos 8 min a pie de la estación Kintetsu-Nara, dentro de la calle comercial Mochiidono</span><br><a href="https://www.google.com/maps/search/?api=1&query=%E3%81%BB%E3%81%86%E3%81%9B%E3%81%8D%E7%AE%B1%20%E5%A5%88%E8%89%AF%E7%9C%8C%E5%A5%88%E8%89%AF%E5%B8%82%E9%A4%85%E9%A3%AF%E6%AE%BF%E7%94%BA47" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:13px;color:var(--hanada);border-bottom:1px solid var(--hanada)">Abrir en Google Maps ↗</a></td></tr>
+        <tr><th>Horario</th><td>10:00–12:50 / 14:00–17:00 (hasta las 17:30 sáb. y dom.)<br><span class="small">Última comanda 10 min antes de cada turno.</span></td></tr>
+        <tr><th>Cerrado</th><td>Los jueves</td></tr>
+        <tr><th>Reservas</th><td>Reserva en línea desde las 21:00 del día anterior<br><span class="small">Reserva un asiento por cada persona que use silla, incluidos los niños.</span></td></tr>
+        <tr><th>Aparcamiento</th><td>No disponible: utiliza los aparcamientos de pago cercanos.</td></tr>
+        <tr><th>Contacto</th><td><a href="mailto:housekibaco0321@gmail.com" style="border-bottom:1px solid var(--line)">housekibaco0321@gmail.com</a></td></tr>
+      </table>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://airrsv.net/housekibaco-sousuke/calendar" target="_blank" rel="noopener">Reservar en línea</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/housekibaco/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINKS -->
+<section class="links" id="links">
+  <div class="wrap">
+    <p class="eyebrow reveal">LINKS</p>
+    <h2 class="reveal">Enlaces</h2>
+    <div class="link-grid">
+      <a class="link-card reveal" href="https://sousuke-kakiha.com" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1.5 13.5a1 1 0 0 1-1 1.5h-13a1 1 0 0 1-1-1.5L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg></span>
+        <span><h3>Tienda en línea</h3><span class="dom">sousuke-kakiha.com | té de hoja de caqui y productos SOUSUKE</span></span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="link-card reveal" href="https://ec.travel.jr-central.co.jp/tp/optionalFacilities/6269K17/plans" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15V7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"/><path d="M4 11h16M8 18l-2 3M16 18l2 3"/></svg></span>
+        <span><h3>Portal de viajes «EX Tabisaki Yoyaku» de JR Central</h3><span class="dom">ec.travel.jr-central.co.jp | reserva junto con tu viaje en Shinkansen</span></span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="link-card reveal" href="mailto:housekibaco0321@gmail.com">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+        <span><h3>Consultas profesionales</h3><span class="dom">housekibaco0321@gmail.com | catering de kakigori, pop-ups y eventos</span></span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="link-card reveal" href="https://nara-kakigori.com/" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4 0-7-1-7-1V5s3 1 7 1 7-2 7-2v15s-3 2-7 2z"/><path d="M12 6v15"/></svg></span>
+        <span><h3>Guía del kakigori de Nara</h3><span class="dom">nara-kakigori.com | tiendas de kakigori por Nara</span></span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SOUSUKE -->
+<section class="sousuke">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">SISTER SHOP</p>
+      <h2>Casa de té de hoja de caqui <span class="grad-text">SOUSUKE</span> by housekibaco</h2>
+      <p>Té de hoja de caqui de cultivo natural, tostado a fuego de leña, y kakigori con ese mismo té como protagonista. Dentro de la terminal de autobuses del Parque de Nara.</p>
+    </div>
+    <a class="btn btn-ghost reveal" href="https://www.instagram.com/kakiha_sousuke/" target="_blank" rel="noopener">SOUSUKE en Instagram</a>
+  </div>
+</section>
+
+<footer>
+  <div class="f-wrap">
+    <div>
+      <img src="images/logo-footer-light.png" alt="kakigori ほうせき箱" style="width:110px;height:auto;margin-bottom:14px">
+      <p style="font-size:13px">Housekibaco LLC — 47 Mochiidono-cho, Nara, Japón</p>
+      <p style="font-size:13px;margin-top:4px">Contacto: <a href="mailto:housekibaco0321@gmail.com">housekibaco0321@gmail.com</a></p>
+    </div>
+    <div class="f-links">
+      <a href="https://www.instagram.com/housekibaco/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://airrsv.net/housekibaco-sousuke/calendar" target="_blank" rel="noopener">Reservar</a>
+      <a href="#top">Volver arriba</a>
+    </div>
+  </div>
+  <p class="copy">© Housekibaco LLC. All rights reserved.</p>
+</footer>
+
+<script>
+const header=document.getElementById('header');
+addEventListener('scroll',()=>{header.classList.toggle('scrolled',scrollY>60)},{passive:true});
+// hero slideshow
+const slides=[...document.querySelectorAll('.hero .slide')];
+const dots=document.querySelector('.hero-dots');
+slides.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Slide '+(i+1));if(i===0)b.classList.add('on');b.onclick=()=>go(i,true);dots.appendChild(b)});
+let cur=0,timer;
+function go(i,manual){
+  slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
+  cur=i%slides.length;
+  slides[cur].classList.add('active');dots.children[cur].classList.add('on');
+  if(manual){clearInterval(timer);start()}
+}
+function start(){timer=setInterval(()=>go(cur+1),7000)}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){start()}
+// gallery lightbox
+const lb=document.createElement('div');lb.className='lightbox';lb.setAttribute('role','dialog');
+const lbImg=document.createElement('img');lb.appendChild(lbImg);document.body.appendChild(lb);
+document.querySelectorAll('.masonry img').forEach(img=>{img.addEventListener('click',()=>{lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('open');document.body.style.overflow='hidden'})});
+function lbClose(){lb.classList.remove('open');document.body.style.overflow=''}
+lb.addEventListener('click',lbClose);
+addEventListener('keydown',e=>{if(e.key==='Escape')lbClose()});
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
